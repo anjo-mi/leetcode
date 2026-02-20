@@ -11,7 +11,6 @@ var myAtoi = function(s) {
     let hasDecimal = false;
     for (let i = 0 ; i < s.length ; i++){
         const char = s[i];
-        console.log({res,char})
         if (!res && char === '0') continue;
         if (!digits.has(char)) break;
         if (char === '.' && hasDecimal) break;
