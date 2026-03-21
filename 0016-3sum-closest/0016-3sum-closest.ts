@@ -10,10 +10,6 @@ function threeSumClosest(nums: number[], target: number): number {
             if (Math.abs(sum - target) < closestDiff){
                 closestDiff = Math.abs(sum - target);
                 closestSum = sum;
-                // while (left < right && nums[left] === nums[left + 1]) left++;
-                // while (left < right && nums[right] === nums[right - 1]) right--;
-                // // left++;
-                // // right--;
                 if (sum === target) return closestSum;
             }
             if (sum < target) left++;
