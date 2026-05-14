@@ -3,12 +3,14 @@
  * @param {number} target
  * @return {number[]}
  */
+// nums = [11,2,15,7]  target = 9
+
 var twoSum = function(nums, target) {
-    const addends = {};
-    for (let i = 0; i < nums.length ; i++){
-        const potential = target - nums[i];
-        if (potential in addends) return [addends[potential] , i];
-        addends[nums[i]] = i;
+    const seen = {};
+    for (let i = 0 ; i < nums.length ; i++){
+        const needed = target - nums[i];
+        if (needed in seen) return [i, seen[needed]];
+        seen[nums[i]] = i;
     }
-    return [null,null];
+    return [-1,-1];
 };
