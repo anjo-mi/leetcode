@@ -33,6 +33,7 @@ const findDepthAndParent = (root, val) => {
 
 
 var isCousins = function(root, x, y) {
+    if (!root) return false;
     const xPAndD = findDepthAndParent(root,x);
     const yPAndD = findDepthAndParent(root,y);
     return xPAndD.parent !== yPAndD.parent && xPAndD.depth === yPAndD.depth;
