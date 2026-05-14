@@ -12,20 +12,28 @@
  * @param {number} y
  * @return {boolean}
  */
+/**
+      1
+     / \
+    2   3
+   /   /
+  4   5
+ */
 
-const findParentAndDepth = (root,node) => {
-    const q = [{curr:root, depth:0, parent:null}];
-    while (q.length){
-        const {curr,depth, parent} = q.shift();
-        if (curr.val === node) return {depth, parent};
-        if (curr.left !== null) q.push({curr:curr.left, depth: depth + 1, parent:curr});
-        if (curr.right !== null) q.push({curr:curr.right, depth: depth + 1, parent:curr});
+const findDepthAndParent = (root, val) => {
+    const stack = [{curr:root, parent:null, depth:0}];
+    while (stack.length){
+        const {curr,parent,depth} = stack.pop();
+        if (curr.val === val) return {depth, parent};
+        if (curr.left !== null) stack.push({curr:curr.left, parent:curr, depth: depth + 1});
+        if (curr.right !== null) stack.push({curr:curr.right, parent:curr, depth: depth + 1});
     }
-    return {depth:null, parent:null};
+    return {depth: -1, parent:null};
 }
 
+
 var isCousins = function(root, x, y) {
-    const xFamilyBranch = findParentAndDepth(root,x);
-    const yFamilyBranch = findParentAndDepth(root,y);
-    return xFamilyBranch.depth === yFamilyBranch.depth && xFamilyBranch.parent !== yFamilyBranch.parent;
+    const xPAndD = findDepthAndParent(root,x);
+    const yPAndD = findDepthAndParent(root,y);
+    return xPAndD.parent !== yPAndD.parent && xPAndD.depth === yPAndD.depth;
 };
