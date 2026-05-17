@@ -22,10 +22,4 @@ var diameterOfBinaryTree = function(root) {
     }
     depth(root);
     return max;
-    // if (!root) return 0;
-    // let max = 0;
-    // const leftDepth = diameterOfBinaryTree(root.left)
-    // const rightDepth = diameterOfBinaryTree(root.right)
-    // const currentDiameter = (leftDepth + rightDepth)
-    // return 1 + Math.max(max, currentDiameter)
 };
