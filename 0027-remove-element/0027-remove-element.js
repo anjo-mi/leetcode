@@ -12,7 +12,6 @@ var removeElement = function(nums, val) {
     // }
     // return nums.length;
     let i = 0, j = nums.length - 1;
-    console.log(nums)
     while (i < j){
         while (nums[i] !== val && i < j) i++;
         while (nums[j] === val && i < j) j--;
@@ -21,7 +20,6 @@ var removeElement = function(nums, val) {
         j--;
     }
     let count = 0;
-    console.log(nums)
     while (nums[count] !== val && count < nums.length) count++;
     nums.splice(count);
     return count;
