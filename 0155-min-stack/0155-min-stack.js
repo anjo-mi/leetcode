@@ -8,7 +8,6 @@ MinStack.prototype.push = function(val) {
     const min = Math.min(val,currMin);
     this.min.push(min);
     this.stack.push(val);
-    console.log(this.min)
 };
 
 MinStack.prototype.pop = function() {
