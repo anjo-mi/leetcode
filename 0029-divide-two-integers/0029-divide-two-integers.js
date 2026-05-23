@@ -12,9 +12,7 @@ var divide = function(dividend, divisor) {
     const sign = Math.sign(dividend) === Math.sign(divisor) ? 1 : -1;
     dividend = Math.abs(dividend);
     divisor = Math.abs(divisor);
-    
     if (dividend < divisor) return 0;
-    
     let count = 0;
     while (dividend >= divisor) {
         let temp = divisor;
@@ -26,7 +24,6 @@ var divide = function(dividend, divisor) {
         dividend -= temp;
         count += multiple;
     }
-    
     count = sign === 1 ? count : -count;
     if (count > INT_MAX) return INT_MAX;
     if (count < INT_MIN) return INT_MIN;
