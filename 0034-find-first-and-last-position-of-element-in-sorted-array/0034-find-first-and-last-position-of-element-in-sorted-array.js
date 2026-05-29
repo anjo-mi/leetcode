@@ -8,7 +8,6 @@ var searchRange = function(nums, target,i=0) {
     const middle = Math.floor(nums.length / 2);
     if (nums[middle] > target) return searchRange(nums.slice(0,middle),target,i);
     if (nums[middle] < target) return searchRange(nums.slice(middle + 1),target,middle + 1 + i);
-    // console.log({nums,middle},nums[middle])
     let [l,m] = [middle-1,middle+1];
     while (nums[l] === nums[middle]) l--;
     while (nums[m] === nums[middle]) m++;
