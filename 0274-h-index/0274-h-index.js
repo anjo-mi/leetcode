@@ -3,21 +3,11 @@
  * @return {number}
  */
 var hIndex = function(cites) {
-    let papers = cites.length;
-    while (papers){
-        let count = 0;
-        for (const cite of cites) if (cite >= papers) count++;
-        if (count >= papers) return papers;
-        papers--;
+    cites.sort((a, b) => b - a);
+    let h = 0;
+    for (let i = 0; i < cites.length; i++) {
+        if (cites[i] >= i + 1) h = i + 1;
+        else break;
     }
-    return papers;
+    return h;
 };
-
-/**
-find the number of published papers
-while that number is greater than 0
-    if the number of papers with a val >= number >= number, return number
-    otherwise number--
-
-return number
- */
