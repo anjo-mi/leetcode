@@ -13,7 +13,6 @@ function multiply(num1: string, num2: string): string {
             pos[p1] += Math.floor(sum / 10);
         }
     }
-    console.log({pos})
     while (pos[0] === 0) pos.splice(0,1);
     return pos.join("");
 };
