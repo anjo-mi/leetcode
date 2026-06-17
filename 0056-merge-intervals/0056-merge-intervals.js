@@ -3,16 +3,6 @@
  * @return {number[][]}
  */
 
-const isMerged = (arr) => {
-    for (let i = 0 ; i < arr.length - 1 ;i++){
-        const end = arr[i][1];
-        const nextStart = arr[i+1][0];
-        if (end >= nextStart) return false;
-    }
-    return true;
-}
-
-
 var merge = function(intervals) {
     if (intervals.length === 1) return intervals;
     intervals.sort((a,b) => a[0] -b[0]);
@@ -35,25 +25,3 @@ var merge = function(intervals) {
     }
     return newInts;
 };
-
-/**
-negatives are of no consequence
-start <= end
-
-sort the outer array by the first number
-const newIntervals = [[1,6], [8,10], [8,18]];
-iterate thru
-for (let i = 1 ; i < intervals.length ; i++)
-
-[[1,3],[2,6],[8,10],[9,18]]
-    - track second number, compare to next's first number
-    start = 1[start]
-     1[end] >= 2[start]
-     max(1[end] , 2[end])
-     new End ^^
-     push([start,newEnd])
-
-     if 1[end] < 2[start]
-     push(start,1[end])
-
- */
