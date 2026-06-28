@@ -4,7 +4,6 @@
  */
 var permuteUnique = function(nums) {
     if (!nums.length) return [[]];
-    // if (nums.length === 1) return [[nums[0]]];
     const perms = new Set();
     let first = nums[0];
     let remains = permuteUnique(nums.slice(1));
