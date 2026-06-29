@@ -1,0 +1,1 @@
+const myPow = (x: number, n: number): number => x**n;
