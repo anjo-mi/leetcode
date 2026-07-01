@@ -14,7 +14,6 @@ function spiralOrder(matrix: number[][]): number[] {
     while (res.length < limit){
         place[0] += dirs[dir%4][0];
         place[1] += dirs[dir%4][1];
-        console.log({dir,place})
         if (dir % 4 === 0){
             if (place[1] >= bounds[1]){
                 bounds[1]--;
@@ -40,12 +39,3 @@ function spiralOrder(matrix: number[][]): number[] {
     }
     return res;
 };
-
-[
-    [1,2,3,4],
-    [5,6,7,8],
-    [9,10,11,12],
-    [13,14,15,16],
-    [17,18,19,20],
-    [21,22,23,24]
-]
