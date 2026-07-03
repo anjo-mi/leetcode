@@ -11,7 +11,6 @@ function merge(intervals: number[][]): number[][] {
         let end = intervals[i][1];
         let nextStart = intervals[x][0];
         let nextEnd = intervals[x][1];
-        console.log({start,end,nextStart, nextEnd})
         while ((nextStart || nextStart === 0) && end >= nextStart && x < intervals.length){
             end = Math.max(end,nextEnd);
             x++;
@@ -31,8 +30,6 @@ function insert(intervals: number[][], newInterval: number[]): number[][] {
     let i = 0;
     while (first > intervals[i]?.[0]) i++;
     intervals.splice(i,0,newInterval);
-    console.log({intervals});
     const merged = merge(intervals);
-    console.log({merged});
     return merged;
 };
