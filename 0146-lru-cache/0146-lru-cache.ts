@@ -1,33 +1,26 @@
 class LRUCache {
     capacity:  number;
-    order: number[][];
-    // this.inCache: Set<number>
+    order: Map<number,number>;
     constructor(capacity: number) {
         this.capacity = capacity;
-        this.order = [];
-        // this.inCache = new Set<number>();
+        this.order = new Map();
     }
 
     get(key: number): number {
-        let recent: number[] | null = null;
-        for (let i = 0 ; i < this.order.length ; i++){
-            if (this.order[i][0] === key){
-                recent = this.order.splice(i,1).pop();
-                this.order.unshift(recent);
-                break;
-            }
-        }
-        if (!recent) return -1;
-        return recent[1];
+        const val = this.order.get(key);
+        if (val === undefined) return -1;
+        this.order.delete(key);
+        this.order.set(key,val);
+        return val;
     }
 
     put(key: number, value: number): void {
-        if (this.get(key) > -1){
-            this.order[0][1] = value;
-            return;
+        if (this.order.size >= this.capacity && !this.order.has(key)){
+            const first = this.order.keys().next().value;
+            this.order.delete(first);
         }
-        this.order.unshift([key,value]);
-        if (this.order.length > this.capacity) this.order.pop();
+        this.order.delete(key);
+        this.order.set(key,value);
     }
 }
 
