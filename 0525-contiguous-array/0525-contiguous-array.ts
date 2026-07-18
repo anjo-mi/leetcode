@@ -1,12 +1,11 @@
 function findMaxLength(nums: number[]): number {
     const counts:Record<string,number> = {'0':0, '1':0};
-    const arr:number[] = [];
+    const arr:number[] = [0];
     let max:number = 0;
     for (const num of nums){
-        arr.push(counts['0'] - counts['1']);
         counts[num]++;
+        arr.push(counts['0'] - counts['1']);
     }
-    arr.push(counts['0'] - counts['1']);
     const compares:Record<string,number> = {};
     for (let i = 0 ; i< arr.length ; i++){
         const diff = arr[i];
