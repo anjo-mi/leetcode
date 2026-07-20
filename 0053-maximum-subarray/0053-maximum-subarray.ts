@@ -1,4 +1,14 @@
 function maxSubArray(nums: number[]): number {
+    let max = nums[0];
+    let maxEnd = nums[0];
+    for (let i = 1; i < nums.length; i++) {
+        maxEnd = Math.max(nums[i], maxEnd + nums[i]);
+        max = Math.max(max, maxEnd);
+    }
+
+    return max;
+};
+// -----------------------------
     // if (nums.length === 1) return nums[0];
     // let max = -999999999;
     // let res:number[] = [];
@@ -13,13 +23,3 @@ function maxSubArray(nums: number[]): number {
     //     }
     // }
     // return max;
-    let max = nums[0];
-    let maxEnd = nums[0];
-
-    for (let i = 1; i < nums.length; i++) {
-        maxEnd = Math.max(nums[i], maxEnd + nums[i]);
-        max = Math.max(max, maxEnd);
-    }
-
-    return max;
-};
