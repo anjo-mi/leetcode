@@ -28,7 +28,6 @@ function rotateRight(head: ListNode | null, k: number): ListNode | null {
         curr = curr.next;
         k--;
     }
-    console.log({prev,curr})
     if (prev) prev.next = null;
     let tail:ListNode | null = curr;
     while (tail && tail.next) tail = tail.next;
