@@ -1,29 +1,29 @@
 class MyQueue {
-    inStack: number[];
-    outStack: number[];
+    in: number[];
+    out: number[];
     constructor() {
-        this.inStack = [];
-        this.outStack = [];
+        this.in = [];
+        this.out = [];
     }
 
     push(x: number): void {
-        this.inStack.push(x);
+        this.in.push(x);
     }
 
     pop(): number {
         this.peek();
-        return this.outStack.pop()!;
+        return this.out.pop()!;
     }
 
     peek(): number {
-        if (this.outStack.length === 0) {
-            while (this.inStack.length > 0) this.outStack.push(this.inStack.pop()!);
+        if (this.out.length === 0) {
+            while (this.in.length > 0) this.out.push(this.in.pop()!);
         }
-        return this.outStack[this.outStack.length - 1];
+        return this.out[this.out.length - 1];
     }
 
     empty(): boolean {
-        return this.inStack.length === 0 && this.outStack.length === 0;
+        return this.in.length === 0 && this.out.length === 0;
     }
     // stack: Map<number,number>;
     // inds: number[];
