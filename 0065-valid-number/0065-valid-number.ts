@@ -21,7 +21,6 @@ function isNumber(s: string): boolean {
         }
         return a;
     }, {} as Record<string,number[]>)
-    console.log({counts})
     for (const char in counts) if (counts[char][0] > 1) return false;
     if (Object.keys(counts).filter(el => ['+','-','.','e'].includes(el.toLowerCase())).length === s.length) return false;
     if ('e' in counts && (counts['e'][1] === 0 || counts['e'][1] === s.length - 1)) return false;
