@@ -6,7 +6,6 @@
  */
 
 var solution = function(isBadVersion: any) {
-
     return function(n: number): number {
         while (isBadVersion(n)) n--;
         return n+1;
