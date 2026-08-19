@@ -10,6 +10,8 @@ class KthLargest {
         let i = 0;
         while (i < this.order.length && this.order[i] > val) i++;
         this.order.splice(i,0,val);
+        // this.order.push(val);
+        // this.order.sort((a,b) => b - a);
         return this.order[this.k-1];
     }
 }
