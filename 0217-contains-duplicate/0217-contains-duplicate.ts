@@ -1,0 +1,1 @@
+const containsDuplicate = (nums: number[]): boolean => nums.length !== new Set<number>(nums).size;
