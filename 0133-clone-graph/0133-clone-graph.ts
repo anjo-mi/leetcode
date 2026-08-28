@@ -15,21 +15,13 @@
 
 function cloneGraph(node: _Node | null): _Node | null {
     if (!node) return null;
-    const clone: Record<number, _Node> = {};
-    const v = new Set<number>();
-    const q: _Node[] = [node];
-    clone[node.val] = new _Node(node.val);
-    while (q.length) {
-        const n = q.shift()!;
-        if (v.has(n.val)) continue;
-        v.add(n.val);
-        for (const neighbor of n.neighbors) {
-            if (!(neighbor.val in clone)) {
-                clone[neighbor.val] = new _Node(neighbor.val);
-            }
-            clone[n.val].neighbors.push(clone[neighbor.val]);
-            q.push(neighbor);
-        }
+    const nodes = new Map<number,_Node>();
+    const dfs = (n:_Node):_Node => {
+        if (nodes.has(n.val)) return nodes.get(n.val);
+        const clone = new _Node(n.val);
+        nodes.set(n.val,clone);
+        for (const neighbor of n.neighbors) clone.neighbors.push(dfs(neighbor));
+        return clone;
     }
-    return clone[node.val];
-}
+    return dfs(node);
+};
