@@ -1,4 +1,4 @@
-function orangesRotting(grid: number[][], count:number = 0): number {
+function orangesRotting(grid: number[][],count:number = 0): number {
     const dirs = [
         [0,1],
         [-1,0],
