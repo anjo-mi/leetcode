@@ -1,18 +1,12 @@
-function combinationSum(candidates: number[], target: number): number[][] {
-    const results: number[][] = [];
-    const backtrack = (index:number = 0, can:number[], rem:number): void => {
-        if (rem === 0){
-            results.push([...can]);
-            return;
-        }
-
-        for (let i = index ; i < candidates.length ; i++){
-            if (candidates[i] > rem) continue;
-            can.push(candidates[i]);
-            backtrack(i,can,rem - candidates[i]);
-            can.pop();
-        }
-    }
-    backtrack(0,[],target);
-    return results;
+function combinationSum(cans: number[], target: number): number[][] {
+    cans.sort((a,b) => a-b);
+    const res:number[][] = [];
+    if (target < 0 || !cans.length) return res;
+    const first = cans[0];
+    if (target === first) return [[first]];
+    const w:number[][] = combinationSum(cans,target - first);
+    const wo:number[][] = combinationSum(cans.slice(1),target);
+    for (const ans of w) res.push([first,...ans]);
+    for (const ans of wo) res.push([...ans]);
+    return res;
 };
