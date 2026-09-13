@@ -1,11 +1,9 @@
-function wordBreak(s: string, dict: string[], memo:Record<string,boolean> = {}): boolean {
-    if (!s.length) return true;
-    if (s in memo) return memo[s];
-    const res:boolean[] = [];
-    for (const word of dict){
-        if (s.startsWith(word)){
-            if ( wordBreak(s.slice(word.length),dict,memo) ) return memo[s] = true;
-        }
-    }
-    return memo[s] = false;
+function wordBreak(s: string, dict: string[], i = 0 , memo:Record<string,boolean> = {}): boolean {
+    if (i === s.length) return true;
+    if (i >   s.length) return false;
+    if (i in memo) return memo[i];
+    const rems:string = s.slice(i);
+    return memo[i] = dict.some(el => {
+        return rems.startsWith(el) && wordBreak(s,dict,i+ el.length, memo);
+    });
 };
