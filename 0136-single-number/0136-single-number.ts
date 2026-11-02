@@ -3,8 +3,6 @@ function singleNumber(nums: number[]): number {
         a[el] = (a[el] || 0) + 1;
         return a;
     }, {} as Record<string,number>);
-    for (const num in counts){
-        if (counts[num] === 1) return +num;
-    }
+    for (const num in counts) if (counts[num] === 1) return +num;
     return NaN;
 };
